@@ -30,9 +30,9 @@ unsigned int convert_char(va_list args, buffer_t *output,
 
 	c = va_arg(args, int);
 
-	ret += print_width(output, ret, flags, widt);
+	ret += print_widt(output, ret, flags, widt);
 	ret += _memcpy(output, &c, 1);
-	ret += print_neg_width(output, ret, flags, widt);
+	ret += print_neg_widt(output, ret, flags, widt);
 
 	return (ret);
 }
@@ -59,9 +59,9 @@ unsigned int convert_percent(va_list args, buffer_t *output,
 	(void)prec;
 	(void)lengt;
 
-	ret += print_width(output, ret, flags, widt);
+	ret += print_widt(output, ret, flags, widt);
 	ret += _memcpy(output, &percent, 1);
-	ret += print_neg_width(output, ret, flags, widt);
+	ret += print_neg_widt(output, ret, flags, widt);
 
 	return (ret);
 }
@@ -94,7 +94,7 @@ unsigned int convert_point(va_list args, buffer_t *output,
 	flags |= 32;
 	ret += convert_ubase(output, address, "0123456789abcdef",
 			flags, widt, prec);
-	ret += print_neg_width(output, ret, flags, widt);
+	ret += print_neg_widt(output, ret, flags, widt);
 
 	return (ret);
 }

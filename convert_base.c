@@ -42,7 +42,7 @@ unsigned int convert_sbase(buffer_t *output, long int num, char *base,
 		if (NEG_FLAG == 0) /* Handle width */
 		{
 			pad = (ZERO_FLAG == 1) ? '0' : ' ';
-			for (; widt > 1; wid--)
+			for (; widt > 1; widt--)
 				ret += _memcpy(output, &pad, 1);
 		}
 	}

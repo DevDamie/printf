@@ -50,8 +50,7 @@ unsigned int convert_di(va_list args, buffer_t *output,
 		count += (d < 0) ? 1 : 0;
 		count += (PLUS_FLAG == 1 && d >= 0) ? 1 : 0;
 		count += (SPACE_FLAG == 1 && d >= 0) ? 1 : 0;
-		/* Handle plus flag when zero flag is active */
-		if (ZERO_FLAG == 1 && PLUS_FLAG == 1 && d >= 0)
+		if (ZERO_FLAG == 1 && PLUS_FLAG == 1 && d >= 0) /*when 0 flag active*/
 			ret += _memcpy(output, &plus, 1);
 		if (ZERO_FLAG == 1 && d < 0) /*Prints -ve sign when zero flag active*/
 			ret += _memcpy(output, &neg, 1);
@@ -61,14 +60,12 @@ unsigned int convert_di(va_list args, buffer_t *output,
 	}
 	if (ZERO_FLAG == 0 && d < 0) /*Print -ve sign when zero flag not active*/
 		ret += _memcpy(output, &neg, 1);
-	/* Handle plus flag when zero flag is not active */
-	if (ZERO_FLAG == 0 && (PLUS_FLAG == 1 && d >= 0))
+	if (ZERO_FLAG == 0 && (PLUS_FLAG == 1 && d >= 0)) /*when 0 flag not active*/
 		ret += _memcpy(output, &plus, 1);
 	if (!(d == 0 && prec == 0))
 		ret += convert_sbase(output, d, "0123456789", flags, 0, prec);
-	ret += print_neg_width(output, ret, flags, widt);
-	return (ret);
-}
+	ret += print_neg_widt(output, ret, flags, widt);
+	return (ret); }
 
 /**
  * convert_b - Converts an unsigned int argument to binary

@@ -5,7 +5,6 @@
 #include <stdarg.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include <stdout.h>
 
 /* Flag Modifier Macros */
 #define PLUS 1
@@ -109,7 +108,7 @@ unsigned int print_neg_widt(buffer_t *output, unsigned int printed,
 /* Helper Functions */
 buffer_t *init_buffer(void);
 void free_buffer(buffer_t *output);
-unsigned int _memcpy(buffer_t *output, constchar *src, unsigned int num);
+unsigned int _memcpy(buffer_t *output, const char *src, unsigned int num);
 unsigned int convert_sbase(buffer_t *output, long int num, char *base,
 		unsigned char flags, int widt, int prec);
 unsigned int convert_ubase(buffer_t *output, unsigned long int num, char *base,
