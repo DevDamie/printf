@@ -12,7 +12,7 @@ int _printf(const char *format, ...);
 void cleanup(va_list args, buffer_t *output)
 {
 	va_end(args);
-	write(1, output->start, output->len);
+	write(1, output->start, output->lengt);
 	free_buffer(output);
 }
 

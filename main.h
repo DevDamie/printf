@@ -33,7 +33,7 @@ typedef struct buffer_s
 {
 	char *buffer;
 	char *start;
-	unsigned int len;
+	unsigned int lengt;
 } buffer_t;
 
 /**

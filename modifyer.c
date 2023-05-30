@@ -21,12 +21,12 @@ unsigned int print_widt(buffer_t *output, unsigned int printed,
 		unsigned char flags, int widt)
 {
 	unsigned int ret = 0;
-	char widt = ' ';
+	char wid = ' ';
 
 	if (NEG_FLAG == 0)
 	{
 		for (widt -= printed; widt > 0;)
-			ret += _memcpy(output, &widt, 1);
+			ret += _memcpy(output, &wid, 1);
 	}
 
 	return (ret);
@@ -46,13 +46,13 @@ unsigned int print_str_widt(buffer_t *output,
 		unsigned char flags, int widt, int prec, int size)
 {
 	unsigned int ret = 0;
-	char widt = ' ';
+	char wid = ' ';
 
 	if (NEG_FLAG == 0)
 	{
 		widt -= (prec == -1) ? size : prec;
 		for (; widt > 0; widt--)
-			ret += _memcpy(output, &widt, 1);
+			ret += _memcpy(output, &wid, 1);
 	}
 
 	return (ret);
@@ -72,12 +72,12 @@ unsigned int print_neg_widt(buffer_t *output, unsigned int printed,
 		unsigned char flags, int widt)
 {
 	unsigned int ret = 0;
-	char widt = ' ';
+	char wid = ' ';
 
 	if (NEG_FLAG == 1)
 	{
 		for (widt -= printed; widt > 0; widt--)
-			ret += _memcpy(output, &widt, 1);
+			ret += _memcpy(output, &wid, 1);
 	}
 
 	return (ret);

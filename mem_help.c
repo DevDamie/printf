@@ -20,13 +20,13 @@ unsigned int _memcpy(buffer_t *output, const char *src, unsigned int num)
 	for (index = 0; index < num; index++)
 	{
 		*(output->buffer) = *(src + index);
-		(output->len)++;
+		(output->lengt)++;
 
-		if (output->len == 1024)
+		if (output->lengt == 1024)
 		{
-			write(1, output->start, output->len);
+			write(1, output->start, output->lengt);
 			output->buffer = output->start;
-			output->len = 0;
+			output->lengt = 0;
 		}
 
 		else
@@ -67,7 +67,7 @@ buffer_t *init_buffer(void)
 	}
 
 	output->start = output->buffer;
-	output->len = 0;
+	output->lengt = 0;
 
 	return (output);
 }
