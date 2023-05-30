@@ -12,7 +12,7 @@ unsigned int convert_o(va_list args, buffer_t *output,
 /**
  * convert_di - Converts an argument to a signed int and
  * stores it to a buffer contained in a struct.
- * 
+ *
  * @args: A va_list pointing to the argument to be converted.
  * @flags: Flag modifiers
  * @widt: A width modifier
@@ -35,11 +35,8 @@ unsigned int convert_di(va_list args, buffer_t *output,
 		d = va_arg(args, int);
 	if (lengt == SHORT)
 		d = (short)d;
-
-	/* Handle space flag */
-	if (SPACE_FLAG == 1 && d >= 0)
+	if (SPACE_FLAG == 1 && d >= 0) /* Handle space flag */
 		ret += _memcpy(output, &space, 1);
-
 	if (prec <= 0 && NEG_FLAG == 0) /* Handle width  */
 	{
 		if (d == LONG_MIN)
@@ -53,38 +50,30 @@ unsigned int convert_di(va_list args, buffer_t *output,
 		count += (d < 0) ? 1 : 0;
 		count += (PLUS_FLAG == 1 && d >= 0) ? 1 : 0;
 		count += (SPACE_FLAG == 1 && d >= 0) ? 1 : 0;
-
 		/* Handle plus flag when zero flag is active */
 		if (ZERO_FLAG == 1 && PLUS_FLAG == 1 && d >= 0)
 			ret += _memcpy(output, &plus, 1);
-		/*Print negative sign when zero flag is active */
-		if (ZERO_FLAG == 1 && d < 0)
+		if (ZERO_FLAG == 1 && d < 0) /*Prints -ve sign when zero flag active*/
 			ret += _memcpy(output, &neg, 1);
-
 		pad = (ZERO_FLAG == 1) ? '0' : ' ';
 		for (widt -= count; widt > 0; widt--)
 			ret += _memcpy(output, &pad, 1);
 	}
-
-	/* Print negative sign when zero flag is not active */
-	if (ZERO_FLAG == 0 && d < 0)
+	if (ZERO_FLAG == 0 && d < 0) /*Print -ve sign when zero flag not active*/
 		ret += _memcpy(output, &neg, 1);
 	/* Handle plus flag when zero flag is not active */
 	if (ZERO_FLAG == 0 && (PLUS_FLAG == 1 && d >= 0))
 		ret += _memcpy(output, &plus, 1);
-
 	if (!(d == 0 && prec == 0))
-		ret += convert_sbase(output, d, "0123456789",
-				flags, 0, prec);
-
+		ret += convert_sbase(output, d, "0123456789", flags, 0, prec);
 	ret += print_neg_width(output, ret, flags, widt);
-
 	return (ret);
 }
 
 /**
  * convert_b - Converts an unsigned int argument to binary
- *             and stores it to a buffer contained in a struct.
+ * and stores it to a buffer contained in a struct.
+ *
  * @args: A va_list pointing to the argument to be converted.
  * @flags: Flag modifiers
  * @widt: A width modifier
@@ -109,7 +98,7 @@ unsigned int convert_b(va_list args, buffer_t *output,
 /**
  * convert_o - Converts an unsigned int to octal and
  * stores it to a buffer contained in a struct.
- * 
+ *
  * @args: A va_list poinitng to the argument to be converted.
  * @flags: Flag modifiers
  * @widt: A width modifier
@@ -148,7 +137,7 @@ unsigned int convert_o(va_list args, buffer_t *output,
 /**
  * convert_u - Converts an unsigned int argument to decimal and
  * stores it to a buffer contained in a struct.
- * 
+ *
  * @args: A va_list pointing to the argument to be converted.
  * @flags: Flag modifiers
  * @widt: A width modifier
