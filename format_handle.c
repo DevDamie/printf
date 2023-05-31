@@ -4,7 +4,7 @@ unsigned char handle_flags(const char *flag, char *index);
 unsigned char handle_lengt(const char *modifier, char *index);
 int handle_widt(va_list args, const char *modifier, char *index);
 int handle_prec(va_list args, const char *modifier, char *index);
-unsigned int (*handle_specifiers)const char *specifier, (va_list buffer_t *,
+unsigned int (*handle_specifiers(const char *specifier))(va_list, buffer_t *,
 		unsigned char, int, int, unsigned char);
 
 /**
