@@ -4,7 +4,7 @@ unsigned char handle_flags(const char *flag, char *index);
 unsigned char handle_lengt(const char *modifier, char *index);
 int handle_widt(va_list args, const char *modifier, char *index);
 int handle_prec(va_list args, const char *modifier, char *index);
-unsigned int (*handle_specifiers(const char *specifier))(va_list, buffer_t *,
+unsigned int (*handle_specifiers)const char *specifier, (va_list buffer_t *,
 		unsigned char, int, int, unsigned char);
 
 /**
@@ -54,7 +54,7 @@ unsigned char handle_flags(const char *flag, char *index)
  * @modifier: A pointer to a potential length modifier.
  * @index: An index counter for the original format string.
  *
- * Return: If a lenth modifier is matched - its corresponding value.
+ * Return: If a length modifier is matched - its corresponding value.
  *         Otherwise - 0.
  */
 unsigned char handle_lengt(const char *modifier, char *index)
@@ -103,7 +103,6 @@ int handle_widt(va_list args, const char *modifier, char *index)
 		value += (*modifier - '0');
 		modifier++;
 	}
-
 	return (value);
 }
 
@@ -158,14 +157,15 @@ int handle_prec(va_list args, const char *modifier, char *index)
 }
 
 /**
- * handle_specifiers - Matches a conversion specifier with
- *                     a corresponding conversion function.
- * @specifier: A pointer to a potential conversion specifier.
+ * *handle_specifiers - Matches a conversion specifier with
+ * a corresponding conversion function.
+ *
+ * @*specifier: A pointer to a potential conversion specifier.
  *
  * Return: If a conversion function is matched - a pointer to the function.
  *         Otherwise - NULL.
  */
-unsigned int (*handle_specifiers(const char *specifier))(va_list, buffer_t *,
+unsigned int (*handle_specifiers(const char *specifier))(va_list buffer_t *,
 		unsigned char, int, int, unsigned char)
 {
 	int i;

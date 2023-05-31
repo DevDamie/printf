@@ -16,7 +16,7 @@ unsigned int convert_R(va_list args, buffer_t *output,
  * @flags: Flag modifiers.
  * @widt: A width modifier.
  * @prec: A precision modifier.
- * @lent: A length modifier.
+ * @lengt: A length modifier.
  * @output: A buffer_t struct containing a character array.
  *
  * Return: The number of bytes stored to the buffer.
